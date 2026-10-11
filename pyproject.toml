@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scan2speech"
+version = "0.1.0"
+description = "Lightweight pipeline to convert scanned PDFs into clean TTS-ready text, audiobooks, and videos"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Abderrahmane Bouamama", email = "bouamama.abderrahmane95@gmail.com"}
+]
+maintainers = [
+    {name = "Abderrahmane Bouamama", email = "bouamama.abderrahmane95@gmail.com"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pypdfium2>=4.0",
+    "Pillow>=10.0",
+    "google-genai>=1.0",
+    "python-dotenv>=1.0",
+    "httpx>=0.25",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+scan2speech = "scan2speech.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
